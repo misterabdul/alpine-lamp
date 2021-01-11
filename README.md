@@ -11,7 +11,7 @@ docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -v /path/to/mysql/d
 ### Run you own image
 
 ```  
-git clone https://github.com/glats/alpine-lamp && cd alpine-lamp/
+git clone https://github.com/misterabdul/alpine-lamp && cd alpine-lamp/
 ```
 
 ### Build the image
@@ -33,8 +33,11 @@ mysql -uroot -ppassword -h 127.0.0.1
 
 ### PhpMyAdmin
 
-If you want to use phpMyAdmin use the branch called: **phpmyadmin-feature**
+If you want to use phpMyAdmin use the branch called: **with-phpmyadmin**
 
+### PHP Only
+
+If you want to use PHP only use the branch called: **php-only**
 
 ## Troubleshooting
 
@@ -54,5 +57,5 @@ host-mapped volumes for MariaDB. Work-around is to use a named volume
 Please let me know or create a pull request
 
 ## Repos
-https://hub.docker.com/r/glats/alpine-lamp  
-https://github.com/glats/alpine-lamp
+https://hub.docker.com/r/misterabdul/alpine-lamp  
+https://github.com/misterabdul/alpine-lamp
