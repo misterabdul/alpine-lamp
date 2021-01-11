@@ -5,7 +5,7 @@ This docker contain a LAMP stack installed from scratch
 ## Installation
 ### Grab from docker hub
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -v /path/to/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp glats/alpine-lamp
+docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -p 80:80 --name lamp misterabdul/alpine-lamp
 ```
 
 ### Run you own image
@@ -22,18 +22,8 @@ docker build -t $USER/alpine-lamp .
 ### Run it
 
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp $USER/alpine-lamp
+docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -e -p 80:80 --name lamp $USER/alpine-lamp
 ```
-
-### Connect to MariaDB
-To use this you need to install mysql/mariadb cli client
-```
-mysql -uroot -ppassword -h 127.0.0.1
-```
-
-### PHP Only
-
-If you want to use PHP only use the branch called: **php-only**
 
 ## Troubleshooting
 
