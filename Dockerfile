@@ -29,7 +29,6 @@ RUN apk add apache2 \
     php7-xml \
     php7-xmlreader \
     php7-xmlwriter \
-    php7-xdebug \
     php7-simplexml \
     php7-zip \
     php7-zlib
