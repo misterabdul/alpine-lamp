@@ -5,7 +5,7 @@ This docker contain a LAMP stack installed from scratch
 ## Installation
 ### Grab from docker hub
 ```
-docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -v /path/to/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp glats/alpine-lamp
+docker run -d -v /path/to/project:/var/www/localhost/htdocs/ -v /path/to/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -p 80:80 -p 3306:3306 --name lamp misterabdul/alpine-lamp
 ```
 
 ### Run you own image
