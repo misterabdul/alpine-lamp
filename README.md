@@ -31,10 +31,6 @@ To use this you need to install mysql/mariadb cli client
 mysql -uroot -ppassword -h 127.0.0.1
 ```
 
-### PhpMyAdmin
-
-If you want to use phpMyAdmin use the branch called: **with-phpmyadmin**
-
 ### PHP Only
 
 If you want to use PHP only use the branch called: **php-only**
