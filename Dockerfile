@@ -1,5 +1,5 @@
-FROM alpine:3.11
-ENV TIMEZONE America/Santiago
+FROM alpine:3.12.3
+ENV TIMEZONE Asia/Jakarta
 RUN apk update && apk upgrade
 RUN apk add mariadb mariadb-client \
     apache2 \ 
@@ -33,10 +33,6 @@ RUN apk add mariadb mariadb-client \
 
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin --filename=composer
-#
-#    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
-#    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
-#    sed -i 's#^DocumentRoot ".*#DocumentRoot "/var/www/localhost/htdocs"#g' /etc/apache2/httpd.conf && \
 
 # configure timezone, mysql, apache
 RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
@@ -57,15 +53,6 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
     sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
-
-
-# Configure xdebug
-RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \ 
-    echo -e "\n[XDEBUG]"  >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini && \  
-    echo "xdebug.remote_connect_back=1" >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
 
 COPY entry.sh /entry.sh
 
