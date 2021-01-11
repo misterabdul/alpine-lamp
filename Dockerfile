@@ -44,11 +44,10 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     sed -i 's#\#LoadModule rewrite_module modules\/mod_rewrite.so#LoadModule rewrite_module modules\/mod_rewrite.so#' /etc/apache2/httpd.conf && \
     sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf
 
-RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
-    sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php7/php.ini && \
+RUN sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
-    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
+    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = 0#' /etc/php7/php.ini
 
 COPY entry.sh /entry.sh
 
