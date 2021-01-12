@@ -6,4 +6,6 @@ httpd
 echo "Done httpd"
 
 # start php
-php
+echo "Starting php"
+php -a
+echo "Done php"
